@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Асан & Рамиса - Біздің махаббат тарихымыз</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --rose: #e8b4b8;
+            --deep-rose: #d4868c;
+            --sage: #95a99c;
+            --cream: #faf6f2;
+            --gold: #c9a961;
+            --charcoal: #3a3a3a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Floral Pattern Background */
+        .floral-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--rose) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--sage) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, var(--gold) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(250, 246, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--rose);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rose);
+        }
+        
+        /* Hero Section with Parallax */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(135deg, var(--rose) 0%, var(--sage) 100%);
+            opacity: 0.1;
+            transform: rotate(-5deg);
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: heroFadeIn 2s ease-out;
+        }
+        
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .hero-date {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--sage);
+            margin-bottom: 20px;
+        }
+        
+        .hero-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        
+        .hero-ampersand {
+            display: block;
+            font-size: 3rem;
+            color: var(--rose);
+            margin: 20px 0;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--sage);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--charcoal);
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+        
+        .story-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 300px 300px 0 0;
+            height: 400px;
+            background: linear-gradient(135deg, var(--rose), var(--sage));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+        
+        /* Timeline */
+        .timeline {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--rose);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 30px;
+            background: var(--cream);
+            border-radius: 10px;
+            margin: 0 40px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            width: 20px;
+            height: 20px;
+            background: var(--rose);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            z-index: 1;
+        }
+        
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        
+        /* Details Section */
+        .details-section {
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, transparent, white);
+        }
+        
+        .details-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .detail-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--rose), var(--sage), var(--gold));
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .detail-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+        }
+        
+        .detail-info {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        /* RSVP Section */
+        .rsvp-section {
+            padding: 100px 20px;
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-family: 'Raleway', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--rose);
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 134, 140, 0.3);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 134, 140, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 50px 20px;
+            text-align: center;
+            background: var(--charcoal);
+            color: white;
+        }
+        
+        .footer-hashtag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--rose);
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-names {
+                font-size: 3rem;
+            }
+            
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .rsvp-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" src="audio/toy_music.mp3" autoplay loop></audio>
+
+    <div class="floral-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">А & Р</div>
+            <ul class="nav-links">
+                <li><a href="#home">Басты бет</a></li>
+                <li><a href="#story">Біздің тарих</a></li>
+                <li><a href="#details">Мәліметтер</a></li>
+                <li><a href="#rsvp">Растау</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-date">09 • 08 • 2025</p>
+            <h1 class="hero-names">
+                Асан
+                <span class="hero-ampersand">&</span>
+                Рамиса
+            </h1>
+            <p class="hero-date">ҮЙЛЕНУ ТОЙЫНА ШАҚЫРАМЫЗ</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30">
+                <path d="M15 20 L10 15 M15 20 L20 15" stroke="#d4868c" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section class="story-section" id="story">
+        <div class="section-header">
+            <p class="section-subtitle">Махаббат тарихы</p>
+            <h2 class="section-title">Біздің жолымыз</h2>
+        </div>
+        <div class="story-content">
+            <div class="story-text">
+                <p>
+                    Құрметті қонақтар! Біз – Асан мен Рамиса – сіздерді өмірімізге ерекше күнге, 
+                    үйлену тойымызға шақырамыз. Бұл күн біздің жаңа өмірімізің бастауы, 
+                    ал сіздердің қатысуларыңыз оны одан да ерекше етеді.
+                </p>
+                <br>
+                <p>
+                    Сіздермен бірге қуанышымызды бөлісуге асығамыз. 
+                    Махаббат пен бақыттың куәгері болыңыздар!
+                </p>
+            </div>
+            <div class="story-image">
+                💑
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="section-header">
+            <p class="section-subtitle">Той күні</p>
+            <h2 class="section-title">Бағдарлама</h2>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p class="timeline-time">16:30</p>
+                    <h3 class="timeline-title">Қонақтарды қарсы алу</h3>
+                    <p>Шампан және жеңіл тағамдар</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p class="timeline-time">17:00</p>
+                    <h3 class="timeline-title">Салтанатты рәсім</h3>
+                    <p>Неке қию рәсімі</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p class="timeline-time">18:00</p>
+                    <h3 class="timeline-title">Мерекелік дастархан</h3>
+                    <p>Салтанатты кешкі ас</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p class="timeline-time">20:00</p>
+                    <h3 class="timeline-title">Би кеші</h3>
+                    <p>Музыка және көңілді кеш</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Details Section -->
+    <section class="details-section" id="details">
+        <div class="section-header">
+            <p class="section-subtitle">Мәліметтер</p>
+            <h2 class="section-title">Маңызды ақпарат</h2>
+        </div>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">📅</div>
+                <h3 class="detail-title">Күні</h3>
+                <p class="detail-info">
+                    9 тамыз, 2025 жыл<br>
+                    Сенбі күні
+                </p>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-icon">📍</div>
+                <h3 class="detail-title">Мекен-жайы</h3>
+                <p class="detail-info">
+                    Шубарат мейрамханасы<br>
+                    <a href="https://2gis.kz/almaty/geo/70000001079635771" target="_blank" style="color: var(--rose); text-decoration: none;">
+                        Картада көру →
+                    </a>
+                </p>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-icon">🎁</div>
+                <h3 class="detail-title">Дресс-код</h3>
+                <p class="detail-info">
+                    Салтанатты киім<br>
+                    Пастельді реңдер
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP Section -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="section-header">
+            <p class="section-subtitle">Қатысу</p>
+            <h2 class="section-title">Келуіңізді растаңыз</h2>
+        </div>
+        <div class="rsvp-form">
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Аты-жөніңіз</label>
+                    <input id="name" name="name" type="text" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Телефон нөміріңіз</label>
+                    <input id="phone" name="phone" type="tel" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="guests">Қонақтар саны</label>
+                    <input id="guests" name="guests" type="number" class="form-input" min="1" value="1" required>
+                </div>
+                <button type="submit" class="submit-button">Растау</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-hashtag">#Асан&Рамиса2025</p>
+        <p class="footer-text">Сіздерді асыға күтеміз! 💕</p>
+    </footer>
+    
+    <button id="musicToggle" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--rose);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    ">
+        ⏸ Музыка
+    </button>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.5}px) rotate(-5deg)`;
+            }
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('.story-section, .timeline-item, .detail-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch('https://script.google.com/macros/s/AKfycbxdb7KRjogTuvu3hNsqWOYBZSZdhV4vXhrTzc2vxhfEUeSL2D3z6mxz1Asoxspmtj2i0w/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert('Рахмет! Сіздің қатысуыңыз расталды. Тойда кездескенше!');
+                form.reset();
+            })
+            .catch(error => {
+                alert('Қате болды. Қайталап көріңіз.');
+                console.error(error);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('bgMusic');
+        const toggleBtn = document.getElementById('musicToggle');
+
+        // Сделаем музыку чуть тише, если нужно
+        audio.volume = 0.7;
+
+        // Попытка автостарт, и разблокировка по первому клику
+        audio.play().catch(() => {
+        document.body.addEventListener('click', () => audio.play(), { once: true });
+        });
+
+        // Переключатель паузы/воспроизведения
+        toggleBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            toggleBtn.innerText = '⏸ Музыка';
+        } else {
+            audio.pause();
+            toggleBtn.innerText = '▶ Музыка';
+        }
+        });
+    });
+
+    </script>
+
+    
+</body>
+</html>

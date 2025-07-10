@@ -219,16 +219,19 @@
         .story-image {
             position: relative;
             overflow: hidden;
-            border-radius: 300px 300px 0 0;
+            border-radius: 300px 300px 0 0; /* та самая арка */
             height: 400px;
-            background: linear-gradient(135deg, var(--rose), var(--sage));
+            /* background: linear-gradient(135deg, var(--rose), var(--sage)); <-- уберите или закомментируйте */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            color: white;
         }
-        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;     /* заполняет весь блок, сохраняя пропорции */
+            display: block;
+        }
         /* Timeline */
         .timeline {
             padding: 80px 20px;
@@ -531,8 +534,9 @@
                 </p>
             </div>
             <div class="story-image">
-                💑
+                <img src="images/us.jpg" alt="Асан & Рамиса">
             </div>
+
         </div>
     </section>
     
@@ -550,7 +554,6 @@
                 <div class="timeline-content">
                     <p class="timeline-time">16:30</p>
                     <h3 class="timeline-title">Қонақтарды қарсы алу</h3>
-                    <p>Шампан және жеңіл тағамдар</p>
                 </div>
             </div>
             
@@ -558,8 +561,7 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <p class="timeline-time">17:00</p>
-                    <h3 class="timeline-title">Салтанатты рәсім</h3>
-                    <p>Неке қию рәсімі</p>
+                    <h3 class="timeline-title">Салтанатты рәсімнің басталуы</h3>
                 </div>
             </div>
             
@@ -568,7 +570,6 @@
                 <div class="timeline-content">
                     <p class="timeline-time">18:00</p>
                     <h3 class="timeline-title">Мерекелік дастархан</h3>
-                    <p>Салтанатты кешкі ас</p>
                 </div>
             </div>
             
@@ -577,7 +578,6 @@
                 <div class="timeline-content">
                     <p class="timeline-time">20:00</p>
                     <h3 class="timeline-title">Би кеші</h3>
-                    <p>Музыка және көңілді кеш</p>
                 </div>
             </div>
         </div>
